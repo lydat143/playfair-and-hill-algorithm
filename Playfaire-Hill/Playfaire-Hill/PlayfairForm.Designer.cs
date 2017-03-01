@@ -1,6 +1,6 @@
 ﻿namespace Playfaire
 {
-    partial class Form1
+    partial class PlayfairForm
     {
         /// <summary>
         /// Required designer variable.

@@ -1,0 +1,10 @@
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.exe.config
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.exe
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.pdb
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire-Hill.csprojResolveAssemblyReference.cache
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.MainForm.resources
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.PlayfairForm.resources
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.Properties.Resources.resources
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire-Hill.csproj.GenerateResource.Cache
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.exe
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.pdb
