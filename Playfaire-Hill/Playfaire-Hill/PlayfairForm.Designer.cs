@@ -47,7 +47,7 @@
             this.grbPlayfair.Controls.Add(this.txtKey);
             this.grbPlayfair.Location = new System.Drawing.Point(13, 13);
             this.grbPlayfair.Name = "grbPlayfair";
-            this.grbPlayfair.Size = new System.Drawing.Size(390, 277);
+            this.grbPlayfair.Size = new System.Drawing.Size(390, 325);
             this.grbPlayfair.TabIndex = 0;
             this.grbPlayfair.TabStop = false;
             this.grbPlayfair.Text = "Playfair Key";
@@ -67,7 +67,7 @@
             this.grbMatrixKey.Controls.Add(this.btnMatrix55);
             this.grbMatrixKey.Location = new System.Drawing.Point(7, 80);
             this.grbMatrixKey.Name = "grbMatrixKey";
-            this.grbMatrixKey.Size = new System.Drawing.Size(377, 180);
+            this.grbMatrixKey.Size = new System.Drawing.Size(377, 239);
             this.grbMatrixKey.TabIndex = 1;
             this.grbMatrixKey.TabStop = false;
             this.grbMatrixKey.Text = "Matrix Key";
@@ -86,6 +86,7 @@
             // btnMatrix55
             // 
             this.btnMatrix55.AutoSize = true;
+            this.btnMatrix55.Checked = true;
             this.btnMatrix55.Location = new System.Drawing.Point(278, 38);
             this.btnMatrix55.Name = "btnMatrix55";
             this.btnMatrix55.Size = new System.Drawing.Size(72, 17);
@@ -93,6 +94,7 @@
             this.btnMatrix55.TabStop = true;
             this.btnMatrix55.Text = "5x5 matrix";
             this.btnMatrix55.UseVisualStyleBackColor = true;
+            this.btnMatrix55.CheckedChanged += new System.EventHandler(this.btnMatrix55_CheckedChanged);
             // 
             // txtKey
             // 
@@ -103,32 +105,34 @@
             // 
             // btnEncrypt
             // 
-            this.btnEncrypt.Location = new System.Drawing.Point(61, 296);
+            this.btnEncrypt.Location = new System.Drawing.Point(56, 344);
             this.btnEncrypt.Name = "btnEncrypt";
             this.btnEncrypt.Size = new System.Drawing.Size(118, 33);
             this.btnEncrypt.TabIndex = 1;
             this.btnEncrypt.Text = "Encryt";
             this.btnEncrypt.UseVisualStyleBackColor = true;
+            this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
             // btnDecrypt
             // 
-            this.btnDecrypt.Location = new System.Drawing.Point(237, 296);
+            this.btnDecrypt.Location = new System.Drawing.Point(232, 344);
             this.btnDecrypt.Name = "btnDecrypt";
             this.btnDecrypt.Size = new System.Drawing.Size(118, 33);
             this.btnDecrypt.TabIndex = 2;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // PlayfairForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 353);
+            this.ClientSize = new System.Drawing.Size(415, 389);
             this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnEncrypt);
             this.Controls.Add(this.grbPlayfair);
-            this.Name = "Form1";
+            this.Name = "PlayfairForm";
             this.Text = "Playfair";
+            this.Load += new System.EventHandler(this.PlayfairForm_Load);
             this.grbPlayfair.ResumeLayout(false);
             this.grbPlayfair.PerformLayout();
             this.grbMatrixKey.ResumeLayout(false);

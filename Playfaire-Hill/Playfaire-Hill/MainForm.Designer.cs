@@ -38,6 +38,8 @@
             this.symmatricclassicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playfairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,10 @@
             this.hillToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.hillToolStripMenuItem.Text = "Hill";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,5 +150,7 @@
         private System.Windows.Forms.ToolStripMenuItem symmatricclassicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playfairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hillToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
