@@ -16,46 +16,143 @@ namespace Playfaire
         {
             InitializeComponent();
         }
+        int iChoseMatrix = 5; // == 5 là matrix 5x5; == 6 là matrix 6x6
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            string strKey = txtKey.ToString(); // chuỗi Key ban đầu
-            char[] cKey; // lưu các ký tự trong chuỗi key
-            for (int i = 1; i < strKey.Length; i++)
+            string strKey = txtKey.Text.ToUpper(); // chuỗi Key ban đầu
+            int iNumchar = 0;// số thứ tự ký tự trong chuỗi
+            int iChar = 65; //A
+            char[,] cKey = new char[6, 6]; // lưu các ký tự trong chuỗi key
+            Console.WriteLine(strKey);
+            for(int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
-                
-            }               
-        }
-
-        private void btnMatrix55_CheckedChanged(object sender, EventArgs e)
-        {
-            int iX = 50, iY = 30;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int j = 0; j < 6; j++)
+                for(int iCot = 0; iCot < iChoseMatrix; iCot++)
                 {
-                    CreateTextBox(j, i, iX, iY);
-                    iX += 35;
+                    if(iNumchar < strKey.Length)
+                    {
+                        //thiếu check ký tự đó đã được thêm vào ma trận chưa
+                        back1:
+                        if (CheckKey(strKey[iNumchar], cKey) == 1)
+                        {
+                            cKey[iHang, iCot] = strKey[iNumchar];
+                            iNumchar++;
+                        }
+                        else
+                        {
+                            iNumchar++;
+                            goto back1;
+                        }
+                            
+                    }
+                    else
+                    {
+                        back2:
+                        if (CheckKey((char)iChar, cKey) == 1)
+                        {
+                            cKey[iHang, iCot] = (char)iChar;
+                            iChar++;
+                        }
+                        else
+                        {
+                            iChar++;
+                            goto back2;
+                        }
+                            
+                    }
+                    Console.WriteLine(cKey[iHang, iCot]);
                 }
-                iX = 50;
-                iY += 30;
             }
         }
 
-        
-        private void CreateTextBox (int iCot, int iHang, int iX, int iY)
+        private int CheckKey(char iChar, char[,] cKey) // kiểm tra trong ma trận đã có ký tự nào rồi
+        {
+            for (int iHang = 0; iHang < iChoseMatrix; iHang++)
+            {
+                for (int iCot = 0; iCot < iChoseMatrix; iCot++)
+                {
+                    if ((cKey[iHang, iCot] == 'I' && iChar == 'J') || (cKey[iHang, iCot] == 'J' && iChar == 'I'))
+                        return 0;
+
+                    if (cKey[iHang, iCot] == iChar)
+                        return 0; // bị trùng ký tự
+                }
+            }
+            return 1; // không bị trùng ký tự
+        }
+
+
+
+        private void btnMatrix55_CheckedChanged(object sender, EventArgs e)
+        {
+            iChoseMatrix = 5;
+           /* foreach (Control oControl in this.Controls)
+            {
+                if(oControl is TextBox)
+                    this.Controls.Remove(oControl);
+            }
+            CreateMatrix(5);*/
+        }
+
+        private void btnMatrix66_CheckedChanged(object sender, EventArgs e)
+        {
+            iChoseMatrix = 6;
+           /* foreach (Control oControl in this.Controls)
+            {
+                if (oControl is TextBox)
+                    this.Controls.Remove(oControl);
+            }
+            CreateMatrix(6);*/
+        }
+
+       /* private void CreateMatrix(int iMatrixSize)
+        {
+            int iX = 50, iY = 30;
+            int iASCII = 65; // mã ASCII của A
+            for (int i = 0; i < iMatrixSize; i++)
+            {
+                for (int j = 0; j < iMatrixSize; j++)
+                {
+                    if(iMatrixSize == 5)
+                    {
+                        if (iASCII == 74) //bỏ qua chữ J
+                            iASCII += 1;
+                        
+                    }
+                    else
+                    {
+                        if (iASCII > 90) //90 là chữ Z
+                            iASCII = 48; //48 là 0
+                    }
+                    
+                    CreateTextBox(i, j, iX, iY, '5', iASCII);// '5' là matrix 5x5
+                    iX += 35;
+                    iASCII++;
+                }
+                iX = 50;
+                iY += 35;
+            }
+        }
+
+        private void CreateTextBox (int iHang, int iCot, int iX, int iY, char cType, int iASCII )
         {
             TextBox txtMatrix = new TextBox();
             txtMatrix.Name = "txtMatrix" +iHang + "-" + iCot;
-            txtMatrix.Size = new Size(30, 40);
+            txtMatrix.Multiline = true;
+            txtMatrix.Size = new Size(30, 30);
+            txtMatrix.Font = new Font("Microsoft Sans Serif", 14);
+            txtMatrix.TextAlign = HorizontalAlignment.Center;
             txtMatrix.Location = new Point(iX, iY);
             txtMatrix.Enabled = false;
+            txtMatrix.Text = new string((char)iASCII, 1);
             grbMatrixKey.Controls.Add(txtMatrix);
         }
-
+        */
         private void PlayfairForm_Load(object sender, EventArgs e)
         {
-            btnMatrix55_CheckedChanged(sender, e);
+            //btnMatrix55_CheckedChanged(sender, e);
+            //btnMatrix66_CheckedChanged(sender, e);
         }
+ 
     }
 }
