@@ -16,7 +16,7 @@ namespace Playfaire
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PlayfairForm());
+            Application.Run(new MainForm());
         }
     }
 }

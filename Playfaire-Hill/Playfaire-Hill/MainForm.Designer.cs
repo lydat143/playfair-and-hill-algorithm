@@ -30,14 +30,14 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.nmSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.encryptDecryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symmatricclassicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playfairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnPlayfair = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnHill = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
@@ -50,44 +50,45 @@
             this.encryptDecryptToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(388, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(714, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem});
+            this.mnNew,
+            this.mnOpen,
+            this.nmSave,
+            this.mnSaveAs});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newToolStripMenuItem
+            // mnNew
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.mnNew.Name = "mnNew";
+            this.mnNew.Size = new System.Drawing.Size(112, 22);
+            this.mnNew.Text = "New";
+            this.mnNew.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
-            // openToolStripMenuItem
+            // mnOpen
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.mnOpen.Name = "mnOpen";
+            this.mnOpen.Size = new System.Drawing.Size(112, 22);
+            this.mnOpen.Text = "Open";
             // 
-            // saveToolStripMenuItem
+            // nmSave
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.nmSave.Name = "nmSave";
+            this.nmSave.Size = new System.Drawing.Size(112, 22);
+            this.nmSave.Text = "Save";
             // 
-            // saveAsToolStripMenuItem
+            // mnSaveAs
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAsToolStripMenuItem.Text = "Save as";
+            this.mnSaveAs.Name = "mnSaveAs";
+            this.mnSaveAs.Size = new System.Drawing.Size(112, 22);
+            this.mnSaveAs.Text = "Save as";
             // 
             // encryptDecryptToolStripMenuItem
             // 
@@ -100,23 +101,26 @@
             // symmatricclassicToolStripMenuItem
             // 
             this.symmatricclassicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playfairToolStripMenuItem,
-            this.hillToolStripMenuItem});
+            this.mnPlayfair,
+            this.mnHill});
             this.symmatricclassicToolStripMenuItem.Name = "symmatricclassicToolStripMenuItem";
             this.symmatricclassicToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.symmatricclassicToolStripMenuItem.Text = "Symmatric(classic)";
             // 
-            // playfairToolStripMenuItem
+            // mnPlayfair
             // 
-            this.playfairToolStripMenuItem.Name = "playfairToolStripMenuItem";
-            this.playfairToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.playfairToolStripMenuItem.Text = "Playfair";
+            this.mnPlayfair.Enabled = false;
+            this.mnPlayfair.Name = "mnPlayfair";
+            this.mnPlayfair.Size = new System.Drawing.Size(122, 22);
+            this.mnPlayfair.Text = "Playfair...";
+            this.mnPlayfair.Click += new System.EventHandler(this.playfairToolStripMenuItem_Click);
             // 
-            // hillToolStripMenuItem
+            // mnHill
             // 
-            this.hillToolStripMenuItem.Name = "hillToolStripMenuItem";
-            this.hillToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hillToolStripMenuItem.Text = "Hill";
+            this.mnHill.Enabled = false;
+            this.mnHill.Name = "mnHill";
+            this.mnHill.Size = new System.Drawing.Size(122, 22);
+            this.mnHill.Text = "Hill...";
             // 
             // openFileDialog1
             // 
@@ -126,8 +130,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 261);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(714, 422);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -142,14 +148,14 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnNew;
+        private System.Windows.Forms.ToolStripMenuItem mnOpen;
+        private System.Windows.Forms.ToolStripMenuItem nmSave;
+        private System.Windows.Forms.ToolStripMenuItem mnSaveAs;
         private System.Windows.Forms.ToolStripMenuItem encryptDecryptToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem symmatricclassicToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playfairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hillToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnPlayfair;
+        private System.Windows.Forms.ToolStripMenuItem mnHill;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }

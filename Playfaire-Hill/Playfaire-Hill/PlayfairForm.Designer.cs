@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.grbPlayfair = new System.Windows.Forms.GroupBox();
+            this.txtKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grbMatrixKey = new System.Windows.Forms.GroupBox();
             this.btnMatrix66 = new System.Windows.Forms.RadioButton();
             this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.btnDecrypt = new System.Windows.Forms.Button();
-            this.txtKey = new System.Windows.Forms.TextBox();
             this.grbPlayfair.SuspendLayout();
             this.grbMatrixKey.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +51,14 @@
             this.grbPlayfair.TabIndex = 0;
             this.grbPlayfair.TabStop = false;
             this.grbPlayfair.Text = "Playfair Key";
+            // 
+            // txtKey
+            // 
+            this.txtKey.Location = new System.Drawing.Point(7, 43);
+            this.txtKey.Name = "txtKey";
+            this.txtKey.Size = new System.Drawing.Size(377, 20);
+            this.txtKey.TabIndex = 3;
+            this.txtKey.TextChanged += new System.EventHandler(this.txtKey_TextChanged);
             // 
             // label1
             // 
@@ -113,17 +121,11 @@
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
             // 
-            // txtKey
-            // 
-            this.txtKey.Location = new System.Drawing.Point(7, 43);
-            this.txtKey.Name = "txtKey";
-            this.txtKey.Size = new System.Drawing.Size(377, 20);
-            this.txtKey.TabIndex = 3;
-            // 
             // PlayfairForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(415, 447);
             this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnEncrypt);

@@ -20,22 +20,23 @@ namespace Playfaire
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            int iX = 50, iY = 30;//tọa độ textbox
             string strKey = txtKey.Text.ToUpper(); // chuỗi Key ban đầu
-            int iNumchar = 0;// số thứ tự ký tự trong chuỗi
+            int iNumchar = 0;// số thứ của tự ký tự trong chuỗi
             int iChar = 65; //A
             char[,] cKey = new char[6, 6]; // lưu các ký tự trong chuỗi key
             Console.WriteLine(strKey);
-            for(int iHang = 0; iHang < iChoseMatrix; iHang++)
+            for (int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
-                for(int iCot = 0; iCot < iChoseMatrix; iCot++)
+                for (int iCot = 0; iCot < iChoseMatrix; iCot++)
                 {
-                    if(iNumchar < strKey.Length)
+                    if (iNumchar < strKey.Length)
                     {
-                        //thiếu check ký tự đó đã được thêm vào ma trận chưa
                         back1:
                         if (CheckKey(strKey[iNumchar], cKey) == 1)
                         {
                             cKey[iHang, iCot] = strKey[iNumchar];
+                            CreateTextBox(iHang, iCot, iX, iY, cKey[iHang, iCot]);
                             iNumchar++;
                         }
                         else
@@ -43,14 +44,20 @@ namespace Playfaire
                             iNumchar++;
                             goto back1;
                         }
-                            
+
                     }
                     else
                     {
                         back2:
                         if (CheckKey((char)iChar, cKey) == 1)
                         {
+
+                            if (iChoseMatrix == 6 && iChar > 90) //90: Z
+                            {
+                                iChar = 48; //48: 0
+                            }
                             cKey[iHang, iCot] = (char)iChar;
+                            CreateTextBox(iHang, iCot, iX, iY, cKey[iHang, iCot]);
                             iChar++;
                         }
                         else
@@ -58,10 +65,13 @@ namespace Playfaire
                             iChar++;
                             goto back2;
                         }
-                            
+                        
                     }
+                    iX += 35;
                     Console.WriteLine(cKey[iHang, iCot]);
                 }
+                iX = 50;
+                iY += 35;
             }
         }
 
@@ -71,8 +81,11 @@ namespace Playfaire
             {
                 for (int iCot = 0; iCot < iChoseMatrix; iCot++)
                 {
-                    if ((cKey[iHang, iCot] == 'I' && iChar == 'J') || (cKey[iHang, iCot] == 'J' && iChar == 'I'))
-                        return 0;
+                    if(iChoseMatrix == 5)
+                    {
+                        if ((cKey[iHang, iCot] == 'I' && iChar == 'J') || (cKey[iHang, iCot] == 'J' && iChar == 'I'))
+                            return 0;
+                    }
 
                     if (cKey[iHang, iCot] == iChar)
                         return 0; // bị trùng ký tự
@@ -133,8 +146,8 @@ namespace Playfaire
                 iY += 35;
             }
         }
-
-        private void CreateTextBox (int iHang, int iCot, int iX, int iY, char cType, int iASCII )
+        */
+        private void CreateTextBox (int iHang, int iCot, int iX, int iY, int iASCII )
         {
             TextBox txtMatrix = new TextBox();
             txtMatrix.Name = "txtMatrix" +iHang + "-" + iCot;
@@ -147,12 +160,16 @@ namespace Playfaire
             txtMatrix.Text = new string((char)iASCII, 1);
             grbMatrixKey.Controls.Add(txtMatrix);
         }
-        */
+    
         private void PlayfairForm_Load(object sender, EventArgs e)
         {
             //btnMatrix55_CheckedChanged(sender, e);
             //btnMatrix66_CheckedChanged(sender, e);
         }
- 
+
+        private void txtKey_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

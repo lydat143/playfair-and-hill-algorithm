@@ -8,3 +8,4 @@ F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Pl
 F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire-Hill.csproj.GenerateResource.Cache
 F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.exe
 F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.pdb
+F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.NewForm.resources
