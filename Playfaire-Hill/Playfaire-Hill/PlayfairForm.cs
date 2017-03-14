@@ -16,66 +16,20 @@ namespace Playfaire
         {
             InitializeComponent();
         }
-        int iChoseMatrix = 5; // == 5 là matrix 5x5; == 6 là matrix 6x6
+        int iChoseMatrix = 0; // == 5 là matrix 5x5; == 6 là matrix 6x6
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            int iX = 50, iY = 30;//tọa độ textbox
-            string strKey = txtKey.Text.ToUpper(); // chuỗi Key ban đầu
-            int iNumchar = 0;// số thứ của tự ký tự trong chuỗi
-            int iChar = 65; //A
-            char[,] cKey = new char[6, 6]; // lưu các ký tự trong chuỗi key
-            Console.WriteLine(strKey);
-            for (int iHang = 0; iHang < iChoseMatrix; iHang++)
-            {
-                for (int iCot = 0; iCot < iChoseMatrix; iCot++)
-                {
-                    if (iNumchar < strKey.Length)
-                    {
-                        back1:
-                        if (CheckKey(strKey[iNumchar], cKey) == 1)
-                        {
-                            cKey[iHang, iCot] = strKey[iNumchar];
-                            CreateTextBox(iHang, iCot, iX, iY, cKey[iHang, iCot]);
-                            iNumchar++;
-                        }
-                        else
-                        {
-                            iNumchar++;
-                            goto back1;
-                        }
-
-                    }
-                    else
-                    {
-                        back2:
-                        if (CheckKey((char)iChar, cKey) == 1)
-                        {
-
-                            if (iChoseMatrix == 6 && iChar > 90) //90: Z
-                            {
-                                iChar = 48; //48: 0
-                            }
-                            cKey[iHang, iCot] = (char)iChar;
-                            CreateTextBox(iHang, iCot, iX, iY, cKey[iHang, iCot]);
-                            iChar++;
-                        }
-                        else
-                        {
-                            iChar++;
-                            goto back2;
-                        }
-                        
-                    }
-                    iX += 35;
-                    Console.WriteLine(cKey[iHang, iCot]);
-                }
-                iX = 50;
-                iY += 35;
-            }
+            List<string> lsPlainString = new List<string>(); // list plaintext đã tách
+            List<string> lsCipherString = new List<string>(); // list plaintext đã tách
+            char [,] cMatrix = new char[6,6]; // ma trận mã
+            tachPlainText("TRUONG AAI", ref lsPlainString); //tách chuỗi Plaintext
+            CreateMatrix(cMatrix); //tạo ma trận mã
+            Encrypt(lsPlainString, ref lsCipherString, cMatrix);
+            Decrypt(lsCipherString, cMatrix);
         }
 
-        private int CheckKey(char iChar, char[,] cKey) // kiểm tra trong ma trận đã có ký tự nào rồi
+        private int CheckMatrix(char iChar, char[,] cKey) // kiểm tra trong ma trận đã có ký tự nào rồi
         {
             for (int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
@@ -89,64 +43,68 @@ namespace Playfaire
 
                     if (cKey[iHang, iCot] == iChar)
                         return 0; // bị trùng ký tự
+
+                    if(cKey[iHang, iCot] == '\0')
+                        return 1; // không bị trùng ký tự hoặc chưa có ký tự nào trong ma trận
                 }
             }
-            return 1; // không bị trùng ký tự
-        }
-
-
-
-        private void btnMatrix55_CheckedChanged(object sender, EventArgs e)
-        {
-            iChoseMatrix = 5;
-           /* foreach (Control oControl in this.Controls)
-            {
-                if(oControl is TextBox)
-                    this.Controls.Remove(oControl);
-            }
-            CreateMatrix(5);*/
+            return 1;
         }
 
         private void btnMatrix66_CheckedChanged(object sender, EventArgs e)
         {
             iChoseMatrix = 6;
-           /* foreach (Control oControl in this.Controls)
-            {
-                if (oControl is TextBox)
-                    this.Controls.Remove(oControl);
-            }
-            CreateMatrix(6);*/
+            btnEncrypt.Enabled = true;
+            
         }
 
-       /* private void CreateMatrix(int iMatrixSize)
+        private void btnMatrix55_CheckedChanged_1(object sender, EventArgs e)
         {
-            int iX = 50, iY = 30;
-            int iASCII = 65; // mã ASCII của A
-            for (int i = 0; i < iMatrixSize; i++)
+            iChoseMatrix = 5;
+            btnEncrypt.Enabled = true;
+        }
+
+        private void CreateMatrix(char[,] cMatrix)
+        {
+            string strKey = txtKey.Text.ToUpper(); // chuỗi Key ban đầu
+            int iNumchar = 0;// số thứ của tự ký tự trong chuỗi
+            int iChar = 65; //A
+            Console.WriteLine(strKey);
+            for (int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
-                for (int j = 0; j < iMatrixSize; j++)
+                for (int iCot = 0; iCot < iChoseMatrix; iCot++)
                 {
-                    if(iMatrixSize == 5)
+                    end:
+                    if (iNumchar < strKey.Length)
                     {
-                        if (iASCII == 74) //bỏ qua chữ J
-                            iASCII += 1;
-                        
+                        while (CheckMatrix(strKey[iNumchar], cMatrix) == 0)// nếu ký tự đã có trong ma trận
+                        {
+                              //thì bỏ qua ký tự đó
+                            iNumchar++;
+                            if (iNumchar >= strKey.Length)
+                                goto end;
+                        }
+                        cMatrix[iHang, iCot] = strKey[iNumchar];
+                        iNumchar++;
                     }
                     else
                     {
-                        if (iASCII > 90) //90 là chữ Z
-                            iASCII = 48; //48 là 0
+                        while (CheckMatrix((char)iChar, cMatrix) == 0)
+                        {
+                            iChar++;
+                        }
+                        if (iChoseMatrix == 6 && iChar > 90) //90: Z
+                        {
+                            iChar = 48; //48: 0
+                        }
+                        cMatrix[iHang, iCot] = (char)iChar;
+                        iChar++;
                     }
-                    
-                    CreateTextBox(i, j, iX, iY, '5', iASCII);// '5' là matrix 5x5
-                    iX += 35;
-                    iASCII++;
+                    Console.WriteLine(cMatrix[iHang, iCot]);
                 }
-                iX = 50;
-                iY += 35;
             }
         }
-        */
+
         private void CreateTextBox (int iHang, int iCot, int iX, int iY, int iASCII )
         {
             TextBox txtMatrix = new TextBox();
@@ -170,6 +128,132 @@ namespace Playfaire
         private void txtKey_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void tachPlainText (string strPlainText, ref List<string> lsString)
+        {
+            string [] strPlainText1 = strPlainText.Split(' ');
+            string strNewPlainText = "";
+            foreach(string str in strPlainText1)
+            {
+                strNewPlainText += str;
+            }
+
+            int iLength = strNewPlainText.Length; // chiều dài plaintext khi không có space
+            lsString = new List<string>();
+            int i = 0, j =0;
+            while (iLength != 0)
+            {
+                string str = strNewPlainText.Substring(i, 2);
+                if( str.Substring(0,1) == str.Substring(1,1))
+                {
+                    strNewPlainText = strNewPlainText.Substring(0, i + 1) + "X" + strNewPlainText.Substring(i + 1);
+                    str = strNewPlainText.Substring(i, 2);
+                }
+
+                lsString.Add(str);
+               
+                i += 2;
+                iLength = strNewPlainText.Substring(i).Length;
+                if (iLength == 1)
+                    strNewPlainText += "X";
+                Console.WriteLine(lsString[j]);
+                j++;
+            }            
+        }
+
+        private void Encrypt(List<string> lsPlainString, ref List<string> lsCipherString, char [,] cMatrix)
+        {
+            int[] iLoc1 = new int[2]; //lưu tọa độ của ký tự trong ma trận iLoc[0]: vị trí hàng, iLoc[1]: vị trí cột
+            int[] iLoc2 = new int[2];
+            foreach (string str in lsPlainString)
+            {
+                string str1 = str.Substring(0, 1) ;
+                chuyenDoi(Convert.ToChar(str1), cMatrix, ref iLoc1 );
+                string str2 = str.Substring(1, 1);
+                chuyenDoi(Convert.ToChar(str2), cMatrix, ref iLoc2);
+                if(iLoc1[0] == iLoc2[0]) // Nếu plainchar cùng 1 hàng
+                {
+                    iLoc1[1] = ( iLoc1[1] + 1 ) % iChoseMatrix;
+                    iLoc2[1] = ( iLoc2[1] + 1 ) % iChoseMatrix;
+                }
+                else
+                {
+                    if (iLoc1[1] == iLoc2[1]) //Nếu PlainChar cùng 1 cột
+                    {
+                        iLoc1[0] = (iLoc1[0] + 1) % iChoseMatrix;
+                        iLoc2[0] = (iLoc2[0] + 1) % iChoseMatrix;
+                    }
+                    else
+                    {
+                        int iTemp = iLoc1[1];
+                        iLoc1[1] = iLoc2[1];
+                        iLoc2[1] = iTemp;
+                    }
+                }
+                
+
+                str1 = cMatrix[iLoc1[0], iLoc1[1]].ToString();
+                str2 = cMatrix[iLoc2[0], iLoc2[1]].ToString();
+                lsCipherString.Add(str1 + str2);
+                Console.WriteLine(str1 + str2);
+            }
+        }
+
+        private int chuyenDoi( char cPlainChar, char[,] cMatrix, ref int[] iLoc) // hàm chuyển đổi ký tự Plaintext sang Ciphertext
+        {
+            
+            for(int iHang = 0; iHang < iChoseMatrix; iHang++)
+            {
+                for(int iCot = 0; iCot < iChoseMatrix; iCot++)
+                {
+                    if(cPlainChar == cMatrix[iHang, iCot])
+                    {
+                        iLoc[0] = iHang;
+                        iLoc[1] = iCot;
+                        return 0;
+                    }
+                }
+            }
+            return 1;
+        }
+
+        private void Decrypt(/*ref List<string> lsPlainString, */List<string> lsCipherString, char[,] cMatrix)
+        {
+            int[] iLoc1 = new int[2]; //lưu tọa độ của ký tự trong ma trận iLoc[0]: vị trí hàng, iLoc[1]: vị trí cột
+            int[] iLoc2 = new int[2];
+            foreach (string str in lsCipherString)
+            {
+                string str1 = str.Substring(0, 1);
+                chuyenDoi(Convert.ToChar(str1), cMatrix, ref iLoc1);
+                string str2 = str.Substring(1, 1);
+                chuyenDoi(Convert.ToChar(str2), cMatrix, ref iLoc2);
+                if (iLoc1[0] == iLoc2[0]) // Nếu plainchar cùng 1 hàng
+                {
+                    iLoc1[1] = (iLoc1[1] - 1) % iChoseMatrix;
+                    iLoc2[1] = (iLoc2[1] - 1) % iChoseMatrix;
+                }
+                else
+                {
+                    if (iLoc1[1] == iLoc2[1]) //Nếu PlainChar cùng 1 cột
+                    {
+                        iLoc1[0] = (iLoc1[0] - 1) % iChoseMatrix;
+                        iLoc2[0] = (iLoc2[0] - 1) % iChoseMatrix;
+                    }
+                    else
+                    {
+                        int iTemp = iLoc1[1];
+                        iLoc1[1] = iLoc2[1];
+                        iLoc2[1] = iTemp;
+                    }
+                }
+
+
+                str1 = cMatrix[iLoc1[0], iLoc1[1]].ToString();
+                str2 = cMatrix[iLoc2[0], iLoc2[1]].ToString();
+               // lsCipherString.Add(str1 + str2);
+                Console.WriteLine(str1 + str2);
+            }
         }
     }
 }

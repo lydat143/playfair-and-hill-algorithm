@@ -33,9 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.grbMatrixKey = new System.Windows.Forms.GroupBox();
             this.btnMatrix66 = new System.Windows.Forms.RadioButton();
-            this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.btnDecrypt = new System.Windows.Forms.Button();
+            this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.grbPlayfair.SuspendLayout();
             this.grbMatrixKey.SuspendLayout();
             this.SuspendLayout();
@@ -71,8 +71,8 @@
             // 
             // grbMatrixKey
             // 
-            this.grbMatrixKey.Controls.Add(this.btnMatrix66);
             this.grbMatrixKey.Controls.Add(this.btnMatrix55);
+            this.grbMatrixKey.Controls.Add(this.btnMatrix66);
             this.grbMatrixKey.Location = new System.Drawing.Point(7, 80);
             this.grbMatrixKey.Name = "grbMatrixKey";
             this.grbMatrixKey.Size = new System.Drawing.Size(377, 263);
@@ -91,19 +91,9 @@
             this.btnMatrix66.UseVisualStyleBackColor = true;
             this.btnMatrix66.CheckedChanged += new System.EventHandler(this.btnMatrix66_CheckedChanged);
             // 
-            // btnMatrix55
-            // 
-            this.btnMatrix55.AutoSize = true;
-            this.btnMatrix55.Location = new System.Drawing.Point(278, 38);
-            this.btnMatrix55.Name = "btnMatrix55";
-            this.btnMatrix55.Size = new System.Drawing.Size(72, 17);
-            this.btnMatrix55.TabIndex = 0;
-            this.btnMatrix55.Text = "5x5 matrix";
-            this.btnMatrix55.UseVisualStyleBackColor = true;
-            this.btnMatrix55.CheckedChanged += new System.EventHandler(this.btnEncrypt_Click);
-            // 
             // btnEncrypt
             // 
+            this.btnEncrypt.Enabled = false;
             this.btnEncrypt.Location = new System.Drawing.Point(60, 393);
             this.btnEncrypt.Name = "btnEncrypt";
             this.btnEncrypt.Size = new System.Drawing.Size(118, 33);
@@ -120,6 +110,17 @@
             this.btnDecrypt.TabIndex = 2;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
+            // 
+            // btnMatrix55
+            // 
+            this.btnMatrix55.AutoSize = true;
+            this.btnMatrix55.Location = new System.Drawing.Point(278, 39);
+            this.btnMatrix55.Name = "btnMatrix55";
+            this.btnMatrix55.Size = new System.Drawing.Size(72, 17);
+            this.btnMatrix55.TabIndex = 2;
+            this.btnMatrix55.Text = "5x5 matrix";
+            this.btnMatrix55.UseVisualStyleBackColor = true;
+            this.btnMatrix55.CheckedChanged += new System.EventHandler(this.btnMatrix55_CheckedChanged_1);
             // 
             // PlayfairForm
             // 
@@ -147,10 +148,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grbMatrixKey;
         private System.Windows.Forms.RadioButton btnMatrix66;
-        private System.Windows.Forms.RadioButton btnMatrix55;
         private System.Windows.Forms.Button btnEncrypt;
         private System.Windows.Forms.Button btnDecrypt;
         private System.Windows.Forms.TextBox txtKey;
+        private System.Windows.Forms.RadioButton btnMatrix55;
     }
 }
 
