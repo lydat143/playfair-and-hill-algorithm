@@ -32,10 +32,10 @@
             this.txtKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grbMatrixKey = new System.Windows.Forms.GroupBox();
+            this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.btnMatrix66 = new System.Windows.Forms.RadioButton();
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.btnDecrypt = new System.Windows.Forms.Button();
-            this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.grbPlayfair.SuspendLayout();
             this.grbMatrixKey.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,17 @@
             this.grbMatrixKey.TabStop = false;
             this.grbMatrixKey.Text = "Matrix Key";
             // 
+            // btnMatrix55
+            // 
+            this.btnMatrix55.AutoSize = true;
+            this.btnMatrix55.Location = new System.Drawing.Point(278, 39);
+            this.btnMatrix55.Name = "btnMatrix55";
+            this.btnMatrix55.Size = new System.Drawing.Size(72, 17);
+            this.btnMatrix55.TabIndex = 2;
+            this.btnMatrix55.Text = "5x5 matrix";
+            this.btnMatrix55.UseVisualStyleBackColor = true;
+            this.btnMatrix55.CheckedChanged += new System.EventHandler(this.btnMatrix55_CheckedChanged_1);
+            // 
             // btnMatrix66
             // 
             this.btnMatrix66.AutoSize = true;
@@ -110,17 +121,7 @@
             this.btnDecrypt.TabIndex = 2;
             this.btnDecrypt.Text = "Decrypt";
             this.btnDecrypt.UseVisualStyleBackColor = true;
-            // 
-            // btnMatrix55
-            // 
-            this.btnMatrix55.AutoSize = true;
-            this.btnMatrix55.Location = new System.Drawing.Point(278, 39);
-            this.btnMatrix55.Name = "btnMatrix55";
-            this.btnMatrix55.Size = new System.Drawing.Size(72, 17);
-            this.btnMatrix55.TabIndex = 2;
-            this.btnMatrix55.Text = "5x5 matrix";
-            this.btnMatrix55.UseVisualStyleBackColor = true;
-            this.btnMatrix55.CheckedChanged += new System.EventHandler(this.btnMatrix55_CheckedChanged_1);
+            this.btnDecrypt.Click += new System.EventHandler(this.btnDecrypt_Click);
             // 
             // PlayfairForm
             // 

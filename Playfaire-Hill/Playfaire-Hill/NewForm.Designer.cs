@@ -39,6 +39,7 @@
             this.txtPlainText.Size = new System.Drawing.Size(447, 248);
             this.txtPlainText.TabIndex = 0;
             this.txtPlainText.TextChanged += new System.EventHandler(this.txtPlainText_TextChanged);
+           
             // 
             // NewForm
             // 

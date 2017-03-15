@@ -17,24 +17,30 @@ namespace Playfaire
             InitializeComponent();
         }
 
+        string strPlainText="";
+        NewForm frmNew = new NewForm();        
+
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewForm frmNew = new NewForm();
             frmNew.Text = "Unnamed";
             frmNew.MdiParent = this;
             frmNew.Show();
-            mnHill.Enabled = true;
-            mnPlayfair.Enabled = true;
         }
 
         private void playfairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PlayfairForm frmPlayFair = new PlayfairForm();
             frmPlayFair.Text = "Play Fair";
-            frmPlayFair.MdiParent = this;
-            frmPlayFair.Show();
+            //  frmPlayFair.MdiParent = this;
+            frmNew.SenDataToMainForm(ref strPlainText);
+            frmPlayFair.GetDataFromMainForm(strPlainText);
+            frmPlayFair.ShowDialog();
         }
 
-        
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            mnPlayfair.Enabled = frmNew.GetEnableButton();
+            mnHill.Enabled = frmNew.GetEnableButton();
+        }
     }
 }

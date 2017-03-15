@@ -17,9 +17,27 @@ namespace Playfaire
             InitializeComponent();
         }
 
+        private string strData = "";
+        private bool bEnableButton = false;
+
+        public void SenDataToMainForm(ref string strData1)
+        {
+            strData1 = this.strData;
+        }
+
         private void txtPlainText_TextChanged(object sender, EventArgs e)
         {
-            
+            strData = txtPlainText.Text;
+            if (strData.Length >= 2)
+                bEnableButton = true;
+            else
+                bEnableButton = false;
         }
+
+        public bool GetEnableButton()
+        {
+            return bEnableButton;
+        }
+        
     }
 }
