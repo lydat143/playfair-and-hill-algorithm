@@ -32,6 +32,7 @@
             this.txtKey = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grbMatrixKey = new System.Windows.Forms.GroupBox();
+            this.flptxt = new System.Windows.Forms.FlowLayoutPanel();
             this.btnMatrix55 = new System.Windows.Forms.RadioButton();
             this.btnMatrix66 = new System.Windows.Forms.RadioButton();
             this.btnEncrypt = new System.Windows.Forms.Button();
@@ -47,7 +48,7 @@
             this.grbPlayfair.Controls.Add(this.grbMatrixKey);
             this.grbPlayfair.Location = new System.Drawing.Point(13, 13);
             this.grbPlayfair.Name = "grbPlayfair";
-            this.grbPlayfair.Size = new System.Drawing.Size(390, 364);
+            this.grbPlayfair.Size = new System.Drawing.Size(390, 376);
             this.grbPlayfair.TabIndex = 0;
             this.grbPlayfair.TabStop = false;
             this.grbPlayfair.Text = "Playfair Key";
@@ -59,6 +60,7 @@
             this.txtKey.Size = new System.Drawing.Size(377, 20);
             this.txtKey.TabIndex = 3;
             this.txtKey.TextChanged += new System.EventHandler(this.txtKey_TextChanged);
+            this.txtKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKey_KeyPress);
             // 
             // label1
             // 
@@ -71,14 +73,22 @@
             // 
             // grbMatrixKey
             // 
+            this.grbMatrixKey.Controls.Add(this.flptxt);
             this.grbMatrixKey.Controls.Add(this.btnMatrix55);
             this.grbMatrixKey.Controls.Add(this.btnMatrix66);
             this.grbMatrixKey.Location = new System.Drawing.Point(7, 80);
             this.grbMatrixKey.Name = "grbMatrixKey";
-            this.grbMatrixKey.Size = new System.Drawing.Size(377, 263);
+            this.grbMatrixKey.Size = new System.Drawing.Size(377, 284);
             this.grbMatrixKey.TabIndex = 1;
             this.grbMatrixKey.TabStop = false;
             this.grbMatrixKey.Text = "Matrix Key";
+            // 
+            // flptxt
+            // 
+            this.flptxt.Location = new System.Drawing.Point(6, 39);
+            this.flptxt.Name = "flptxt";
+            this.flptxt.Size = new System.Drawing.Size(266, 225);
+            this.flptxt.TabIndex = 4;
             // 
             // btnMatrix55
             // 
@@ -105,7 +115,7 @@
             // btnEncrypt
             // 
             this.btnEncrypt.Enabled = false;
-            this.btnEncrypt.Location = new System.Drawing.Point(60, 393);
+            this.btnEncrypt.Location = new System.Drawing.Point(59, 395);
             this.btnEncrypt.Name = "btnEncrypt";
             this.btnEncrypt.Size = new System.Drawing.Size(118, 33);
             this.btnEncrypt.TabIndex = 1;
@@ -115,7 +125,8 @@
             // 
             // btnDecrypt
             // 
-            this.btnDecrypt.Location = new System.Drawing.Point(236, 393);
+            this.btnDecrypt.Enabled = false;
+            this.btnDecrypt.Location = new System.Drawing.Point(230, 395);
             this.btnDecrypt.Name = "btnDecrypt";
             this.btnDecrypt.Size = new System.Drawing.Size(118, 33);
             this.btnDecrypt.TabIndex = 2;
@@ -128,7 +139,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(415, 447);
+            this.ClientSize = new System.Drawing.Size(415, 440);
             this.Controls.Add(this.btnDecrypt);
             this.Controls.Add(this.btnEncrypt);
             this.Controls.Add(this.grbPlayfair);
@@ -153,6 +164,7 @@
         private System.Windows.Forms.Button btnDecrypt;
         private System.Windows.Forms.TextBox txtKey;
         private System.Windows.Forms.RadioButton btnMatrix55;
+        private System.Windows.Forms.FlowLayoutPanel flptxt;
     }
 }
 

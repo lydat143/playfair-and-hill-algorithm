@@ -12,32 +12,58 @@ namespace Playfaire
 {
     public partial class NewForm : Form
     {
+        private string strData = "";
+        List<string> lsData = new List<string>();
+        private bool bEnableButton = false;
+
         public NewForm()
         {
             InitializeComponent();
+            
         }
-
-        private string strData = "";
-        private bool bEnableButton = false;
+        
+        private void ShowText()
+        {
+            foreach(string str in lsData)
+            {
+                strData += str + " ";
+            }
+            txtText.Text = strData;
+        }
 
         public void SenDataToMainForm(ref string strData1)
         {
             strData1 = this.strData;
         }
 
-        private void txtPlainText_TextChanged(object sender, EventArgs e)
+        public void GetListDataFromMainForm(List<string> lsString)
         {
-            strData = txtPlainText.Text;
-            if (strData.Length >= 2)
-                bEnableButton = true;
-            else
-                bEnableButton = false;
+            lsData = lsString;
+            foreach (string str in lsData)
+            {
+                strData += str + " ";
+            }
+            txtText.Text = strData;
+        }
+
+        public void GetDataFromMainForm(string str)
+        {
+            txtText.Text = str;
+            bEnableButton = true;
         }
 
         public bool GetEnableButton()
         {
             return bEnableButton;
         }
-        
+
+        private void txtText_TextChanged(object sender, EventArgs e)
+        {
+            strData = txtText.Text;
+            if (strData.Length >= 2)
+                bEnableButton = true;
+            else
+                bEnableButton = false;
+        }
     }
 }

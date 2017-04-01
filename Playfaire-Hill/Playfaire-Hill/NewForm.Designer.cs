@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPlainText = new System.Windows.Forms.TextBox();
+            this.txtText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtPlainText
+            // txtText
             // 
-            this.txtPlainText.Location = new System.Drawing.Point(8, 7);
-            this.txtPlainText.Multiline = true;
-            this.txtPlainText.Name = "txtPlainText";
-            this.txtPlainText.Size = new System.Drawing.Size(447, 248);
-            this.txtPlainText.TabIndex = 0;
-            this.txtPlainText.TextChanged += new System.EventHandler(this.txtPlainText_TextChanged);
-           
+            this.txtText.Location = new System.Drawing.Point(8, 7);
+            this.txtText.Multiline = true;
+            this.txtText.Name = "txtText";
+            this.txtText.Size = new System.Drawing.Size(447, 248);
+            this.txtText.TabIndex = 0;
+            this.txtText.TextChanged += new System.EventHandler(this.txtText_TextChanged);
             // 
             // NewForm
             // 
@@ -47,7 +46,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(462, 261);
-            this.Controls.Add(this.txtPlainText);
+            this.Controls.Add(this.txtText);
             this.Name = "NewForm";
             this.Text = "NewForm";
             this.ResumeLayout(false);
@@ -57,6 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPlainText;
+        private System.Windows.Forms.TextBox txtText;
     }
 }

@@ -69,26 +69,27 @@
             // mnNew
             // 
             this.mnNew.Name = "mnNew";
-            this.mnNew.Size = new System.Drawing.Size(112, 22);
+            this.mnNew.Size = new System.Drawing.Size(152, 22);
             this.mnNew.Text = "New";
             this.mnNew.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // mnOpen
             // 
             this.mnOpen.Name = "mnOpen";
-            this.mnOpen.Size = new System.Drawing.Size(112, 22);
+            this.mnOpen.Size = new System.Drawing.Size(152, 22);
             this.mnOpen.Text = "Open";
+            this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
             // 
             // nmSave
             // 
             this.nmSave.Name = "nmSave";
-            this.nmSave.Size = new System.Drawing.Size(112, 22);
+            this.nmSave.Size = new System.Drawing.Size(152, 22);
             this.nmSave.Text = "Save";
             // 
             // mnSaveAs
             // 
             this.mnSaveAs.Name = "mnSaveAs";
-            this.mnSaveAs.Size = new System.Drawing.Size(112, 22);
+            this.mnSaveAs.Size = new System.Drawing.Size(152, 22);
             this.mnSaveAs.Text = "Save as";
             // 
             // encryptDecryptToolStripMenuItem

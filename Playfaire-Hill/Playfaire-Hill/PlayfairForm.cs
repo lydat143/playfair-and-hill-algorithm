@@ -7,37 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Playfaire
 {
     public partial class PlayfairForm : Form
     {
         string strPlainText;
+        string strKey = "";
+        List<string> lsPlainString, lsCipherString;
+        char[,] cMatrix; // ma trận mã
 
         public PlayfairForm()
         {
             InitializeComponent();
         }
 
+        //hàm lấy plaintext từ MainForm
         public void GetDataFromMainForm (string strData)
         {
              strPlainText = strData.ToUpper();
         }
 
+        //hàm gửi plaintext đã xử lý cho MainForm
+        public List<string> SendPlainTextToMainForm ()
+        {
+            return lsPlainString;
+        }
+
+        //hàm gửi ciphertext đã xử lý cho MainForm
+        public List<string> SendCipherTextToMainForm()
+        {
+            return lsCipherString;
+        }
+
         private void PlayfairForm_Load(object sender, EventArgs e)
         {
+            btnMatrix55.Checked = true;           
             //btnMatrix55_CheckedChanged(sender, e);
             //btnMatrix66_CheckedChanged(sender, e);
         }
 
         int iChoseMatrix = 0; // == 5 là matrix 5x5; == 6 là matrix 6x6
-        
-        private void btnEncrypt_Click(object sender, EventArgs e)
-        {            
-            char [,] cMatrix = new char[6,6]; // ma trận mã
-            CreateMatrix(cMatrix); //tạo ma trận mã
-            Encrypt(cMatrix);
-        }
 
         // Hàm kiểm tra các ký tự trong ma trận
         private int CheckMatrix(char iChar, char[,] cKey) 
@@ -62,26 +73,15 @@ namespace Playfaire
             return 1;
         }
 
-        private void btnMatrix66_CheckedChanged(object sender, EventArgs e)
-        {
-            iChoseMatrix = 6;
-            btnEncrypt.Enabled = true;
-            
-        }
-
-        private void btnMatrix55_CheckedChanged_1(object sender, EventArgs e)
-        {
-            iChoseMatrix = 5;
-            btnEncrypt.Enabled = true;
-        }
-
         // Hàm tạo ma trận mã, với key nhập vào ban đầu
-        private void CreateMatrix(char[,] cMatrix)
+        private void CreateMatrix()
         {
-            string strKey = txtKey.Text.ToUpper(); // chuỗi Key ban đầu
+            cMatrix = new char[6, 6]; // ma trận mã
             int iNumchar = 0;// số thứ của tự ký tự trong chuỗi
             int iChar = 65; //A
+            flptxt.Controls.Clear();
             Console.WriteLine(strKey);
+            
             for (int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
                 for (int iCot = 0; iCot < iChoseMatrix; iCot++)
@@ -112,29 +112,33 @@ namespace Playfaire
                         cMatrix[iHang, iCot] = (char)iChar;
                         iChar++;
                     }
+
+                    flptxt.Controls.Add(CreateTextBox(cMatrix[iHang, iCot]));
                     Console.WriteLine(cMatrix[iHang, iCot]);
                 }
             }
         }
 
         // Hàm tạo các textbox để hiển thị ma trận
-        private void CreateTextBox (int iHang, int iCot, int iX, int iY, int iASCII )
+        private TextBox CreateTextBox (char cASCII )
         {
             TextBox txtMatrix = new TextBox();
-            txtMatrix.Name = "txtMatrix" +iHang + "-" + iCot;
-            txtMatrix.Multiline = true;
-            txtMatrix.Size = new Size(30, 30);
+            txtMatrix.Name = "txtMatrix" + cASCII;
+            //txtMatrix.Multiline = true;
+            int width = 0, height = 0;
+            if (iChoseMatrix == 5)
+            {
+                txtMatrix.Size = new Size(40, 40);
+            }else
+            {
+                txtMatrix.Size = new Size(35,35);
+            }
             txtMatrix.Font = new Font("Microsoft Sans Serif", 14);
             txtMatrix.TextAlign = HorizontalAlignment.Center;
-            txtMatrix.Location = new Point(iX, iY);
             txtMatrix.Enabled = false;
-            txtMatrix.Text = new string((char)iASCII, 1);
-            grbMatrixKey.Controls.Add(txtMatrix);
-        }
-    
-        private void txtKey_TextChanged(object sender, EventArgs e)
-        {
-            
+            txtMatrix.Text = cASCII.ToString();
+            //grbMatrixKey.Controls.Add(txtMatrix);
+            return txtMatrix;
         }
 
         //hàm xử lý chuỗi ban đầu (tách chuỗi ban đầu thành từng cặp ký tự );
@@ -170,10 +174,11 @@ namespace Playfaire
             }            
         }
 
+        //hàm hiện thực mã hóa
         private void Encrypt(char [,] cMatrix)
         {
-            List<string> lsPlainString = new List<string>(); // list plaintext đã tách
-            List<string> lsCipherString = new List<string>(); // list plaintext đã tách
+            lsPlainString = new List<string>(); // list plaintext đã tách
+            lsCipherString = new List<string>(); // list ciphertext
             XuLyChuoi(strPlainText, ref lsPlainString); //tách chuỗi Plaintext
             int[] iLoc1 = new int[2]; //lưu tọa độ của ký tự trong ma trận iLoc[0]: vị trí hàng, iLoc[1]: vị trí cột
             int[] iLoc2 = new int[2];
@@ -211,15 +216,9 @@ namespace Playfaire
             }
         }
 
-        private void btnDecrypt_Click(object sender, EventArgs e)
-        {
-            char[,] cMatrix = new char[6, 6]; // ma trận mã
-            CreateMatrix(cMatrix); //tạo ma trận mã
-            Decrypt(cMatrix);
-        }
-
+        // hàm tìm vị trí của ký tự trong ma trận
         private int ViTri( char cPlainChar, char[,] cMatrix, ref int[] iLoc) 
-        { // hàm tìm vị trí của ký tự trong ma trận
+        { 
             
             for(int iHang = 0; iHang < iChoseMatrix; iHang++)
             {
@@ -236,10 +235,11 @@ namespace Playfaire
             return 1;
         }
 
+        //hàm hiện thực giải mã
         private void Decrypt(char[,] cMatrix)
         {
-            List<string> lsPlainString = new List<string>(); // list plaintext đã tách
-            List<string> lsCipherString = new List<string>(); // list plaintext đã tách
+            lsPlainString = new List<string>(); // list plaintext đã tách
+            lsCipherString = new List<string>(); // list ciphertext 
             XuLyChuoi(strPlainText, ref lsPlainString); //tách chuỗi Plaintext
             int[] iLoc1 = new int[2]; //lưu tọa độ của ký tự trong ma trận iLoc[0]: vị trí hàng, iLoc[1]: vị trí cột
             int[] iLoc2 = new int[2];
@@ -274,6 +274,48 @@ namespace Playfaire
               //  lsPlainString.Add(str1 + str2);
                 Console.WriteLine(str1 + str2);
             }
+        }
+
+        private void btnMatrix66_CheckedChanged(object sender, EventArgs e)
+        {
+            iChoseMatrix = 6;
+            btnEncrypt.Enabled = true;
+            btnDecrypt.Enabled = true;
+            CreateMatrix();
+        }
+
+        private void btnMatrix55_CheckedChanged_1(object sender, EventArgs e)
+        {
+            iChoseMatrix = 5;
+            btnEncrypt.Enabled = true;
+            btnDecrypt.Enabled = true;
+            CreateMatrix();
+        }
+
+        private void txtKey_TextChanged(object sender, EventArgs e)
+        {
+            strKey = txtKey.Text.ToUpper();
+            CreateMatrix();
+        }
+
+        private void btnEncrypt_Click(object sender, EventArgs e)
+        {
+            Encrypt(cMatrix);
+            this.Close();
+        }
+
+        private void btnDecrypt_Click(object sender, EventArgs e)
+        {
+            Decrypt(cMatrix);
+            this.Close();
+        }
+
+        private void txtKey_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //kiểm tra ký tự nhập vào có phải là số hay không
+            //do ma trận mã 5x5 không mã hóa được ký tự số
+            if (Char.IsDigit(e.KeyChar) && btnMatrix55.Checked)
+                e.Handled = true;
         }
     }
 }
