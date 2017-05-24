@@ -10,9 +10,6 @@ F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Pl
 F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.pdb
 F:\GitHub\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.NewForm.resources
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire-Hill.csprojResolveAssemblyReference.cache
-D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.MainForm.resources
-D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.NewForm.resources
-D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.PlayfairForm.resources
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.Properties.Resources.resources
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire-Hill.csproj.GenerateResource.Cache
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfaire.exe
@@ -20,3 +17,9 @@ D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.exe.config
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.exe
 D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\Playfaire.pdb
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\DevComponents.DotNetBar2.dll
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\bin\Debug\DevComponents.DotNetBar2.xml
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfair.Form1.resources
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfair.MainForm.resources
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfair.NewForm.resources
+D:\GitHub\playfair-and-hill-algorithm\playfair-and-hill-algorithm\Playfaire-Hill\Playfaire-Hill\obj\Debug\Playfair.PlayfairForm.resources

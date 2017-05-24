@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace Playfaire
+namespace Playfair
 {
     public partial class PlayfairForm : Form
     {

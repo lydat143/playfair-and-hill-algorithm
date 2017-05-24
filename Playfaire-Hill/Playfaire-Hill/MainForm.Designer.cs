@@ -1,4 +1,4 @@
-﻿namespace Playfaire
+﻿namespace Playfair
 {
     partial class MainForm
     {
@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnNew = new System.Windows.Forms.ToolStripMenuItem();
             this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,22 +39,13 @@
             this.symmatricclassicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnPlayfair = new System.Windows.Forms.ToolStripMenuItem();
             this.mnHill = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // openFileDialog1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.encryptDecryptToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(714, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // fileToolStripMenuItem
             // 
@@ -69,27 +61,27 @@
             // mnNew
             // 
             this.mnNew.Name = "mnNew";
-            this.mnNew.Size = new System.Drawing.Size(152, 22);
+            this.mnNew.Size = new System.Drawing.Size(112, 22);
             this.mnNew.Text = "New";
             this.mnNew.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // mnOpen
             // 
             this.mnOpen.Name = "mnOpen";
-            this.mnOpen.Size = new System.Drawing.Size(152, 22);
+            this.mnOpen.Size = new System.Drawing.Size(112, 22);
             this.mnOpen.Text = "Open";
             this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
             // 
             // nmSave
             // 
             this.nmSave.Name = "nmSave";
-            this.nmSave.Size = new System.Drawing.Size(152, 22);
+            this.nmSave.Size = new System.Drawing.Size(112, 22);
             this.nmSave.Text = "Save";
             // 
             // mnSaveAs
             // 
             this.mnSaveAs.Name = "mnSaveAs";
-            this.mnSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.mnSaveAs.Size = new System.Drawing.Size(112, 22);
             this.mnSaveAs.Text = "Save as";
             // 
             // encryptDecryptToolStripMenuItem
@@ -124,21 +116,28 @@
             this.mnHill.Size = new System.Drawing.Size(122, 22);
             this.mnHill.Text = "Hill...";
             // 
-            // openFileDialog1
+            // menuStrip1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.encryptDecryptToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(740, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(714, 422);
+            this.ClientSize = new System.Drawing.Size(740, 422);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -147,8 +146,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnNew;
         private System.Windows.Forms.ToolStripMenuItem mnOpen;
@@ -158,7 +157,6 @@
         private System.Windows.Forms.ToolStripMenuItem symmatricclassicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnPlayfair;
         private System.Windows.Forms.ToolStripMenuItem mnHill;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

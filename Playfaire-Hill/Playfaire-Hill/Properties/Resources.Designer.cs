@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Playfaire.Properties
+namespace Playfair.Properties
 {
 
 

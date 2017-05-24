@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.IO;
 
-namespace Playfaire
+namespace Playfair
 {
     public partial class MainForm : Form
     {
@@ -115,6 +115,11 @@ namespace Playfaire
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Playfaire
+﻿namespace Playfair
 {
     partial class PlayfairForm
     {
